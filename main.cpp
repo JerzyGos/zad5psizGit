@@ -72,7 +72,7 @@ bool negateImage(const char* src, int headerSize){
 int main(void){
 
 
- const char* filePath = "sample1.bmp";
+ const char* filePath = "test.bmp";
     const char* negFilePath = "test-neg.bmp";
     FILE* bmp = fopen(filePath, "rb");
     FileHeader fh;
