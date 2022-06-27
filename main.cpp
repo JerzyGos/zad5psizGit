@@ -71,6 +71,43 @@ bool negateImage(const char* src, int headerSize){
 
 int main(void){
 
- cout << "METADATA  / Zadanie 5 " << endl;
+
+ const char* filePath = "sample1.bmp";
+    const char* negFilePath = "test-neg.bmp";
+    FILE* bmp = fopen(filePath, "rb");
+    FileHeader fh;
+    BitmapInformationHeader bih;
+
+    //fread(&fh, 14, 1, bmp); // Read all from HEADER - incorrect values (why?)
+    fread(&fh.signature,2,1,bmp);
+    fread(&fh.file_size,4,1,bmp);
+    fread(&fh.reserved,4,1,bmp);
+    fread(&fh.file_offset_to_pixel_array,4,1,bmp);
+
+    fread(&bih, 40, 1, bmp); // Read all from INFO_HEADER
+
+    cout << "\nMETADATA FROM FILE / Zadanie 5 " << endl;
+    cout << "-------------------------------------" << endl;
+    // INFO FROM FILE HEADER
+    cout << "SIGNATURE: " << fh.signature << endl;
+    cout << "SIZE: " << fh.file_size << " B" << endl;
+    cout << "RESERVED A: " << fh.reserved << endl;
+    cout << "OFFSET: " << fh.file_offset_to_pixel_array << " B"<< endl;
+    cout << "-------------------------------------" << endl;
+
+    //INFO FROM INFORMATION HEADER
+    cout << "BIH size: " << bih.dib_header_size << " B" << endl <<
+            "Image width: " << bih.image_width << " px" << endl <<
+            "Image height: " << bih.image_height << " px" << endl <<
+            "Planes: " << bih.planes << endl <<
+            "Depth: " << bih.bits_per_pixel << endl <<
+            "Compression: " << bih.compression << endl <<
+            "Image size: " << bih.image_size << endl <<
+            "X pixels per meter: " << bih.x_pixels_per_meter << endl <<
+            "Y pixels per meter: " << bih.y_pixels_per_meter << endl <<
+            "Colors: " << bih.colors_in_color_table << endl <<
+            "Important colors: " << bih.important_color_count << endl;
+
+    cout << "-------------------------------------" << endl;
 
 }

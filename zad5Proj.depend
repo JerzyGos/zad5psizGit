@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1656291914 source:m:\codeblockproj\zad5psizgit\main.cpp
+	<iostream>
+	<fstream>
+
