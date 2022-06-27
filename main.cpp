@@ -110,4 +110,34 @@ int main(void){
 
     cout << "-------------------------------------" << endl;
 
+ char convert;
+    bool loop = true;
+    cout << "Would you like to convert image to negative (y/n)? ";
+    while(loop){
+        cin >> convert;
+        switch(convert){
+            case 'y':{
+                loop = false;
+                continue;
+            }
+            case 'n':{
+                return 0;
+            }
+            default:{
+                cout << "Incorrect option, try again... (y/n) ";
+            }
+        }
+    }
+    cout << "> Converting image to negative..." << endl;
+    bool succeed = negateImage(filePath, fh.file_offset_to_pixel_array);
+    if(succeed){
+        cout << "> Conversion completed!" << endl;
+    } else {
+        cout << "> Conversion failed!" << endl;
+    }
+    cout << "-------------------------------------" << endl;
+    cout << "Press enter to close...";
+    cin.sync(); cin.get();
+
 }
+
